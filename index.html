@@ -2,502 +2,256 @@
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PRG Vote Hub</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRG Mobile Vote Hub</title>
 
-```
+<style>
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background:
-    radial-gradient(circle at top center, rgba(180, 0, 0, 0.22), transparent 30%),
-    radial-gradient(circle at bottom left, rgba(120, 0, 0, 0.15), transparent 28%),
-    linear-gradient(180deg, #050505 0%, #0b0b0b 100%);
-  color: #ffffff;
-  min-height: 100vh;
+    radial-gradient(circle at top center, rgba(200,0,0,0.2), transparent 30%),
+    linear-gradient(180deg, #111 0%, #050505 100%);
+  color: #fff;
 }
 
+/* Layout */
 .container {
-  width: 100%;
-  max-width: 560px;
-  margin: 0 auto;
-  padding: 18px;
+  max-width: 650px;
+  margin: auto;
+  padding: 12px;
 }
 
 .card {
-  background: linear-gradient(180deg, rgba(18,18,18,0.98), rgba(8,8,8,0.98));
-  border: 1px solid #262626;
-  border-radius: 22px;
-  padding: 18px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-  margin-bottom: 16px;
-}
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #3d1212;
-  background:
-    linear-gradient(180deg, rgba(28, 6, 6, 0.95), rgba(6, 6, 6, 0.98));
-}
-
-.dragon-bg {
-  position: absolute;
-  right: -18px;
-  top: -10px;
-  width: 170px;
-  height: 340px;
-  opacity: 0.10;
-  color: #ff2d2d;
-  pointer-events: none;
-}
-
-.brand-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  position: relative;
-  z-index: 1;
-}
-
-.logo-box {
-  width: 76px;
-  height: 76px;
-  min-width: 76px;
+  background: linear-gradient(180deg,#1b1b1b,#0a0a0a);
+  border: 1px solid #3a3a3a;
   border-radius: 20px;
-  background: linear-gradient(180deg, #260606, #090909);
-  border: 1px solid #672020;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.08);
+  padding: 16px;
+  margin-bottom: 14px;
 }
 
-.logo-box svg {
-  width: 54px;
-  height: 54px;
-  color: #d10000;
+/* Header */
+.hero {
+  text-align: center;
+  border: 1px solid #5a1a1a;
 }
 
-.eyebrow {
-  display: inline-block;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 60, 60, 0.25);
-  background: rgba(130, 0, 0, 0.18);
-  color: #ff9b9b;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+.hero-logo {
+  width: 100px;
   margin-bottom: 10px;
+  filter: drop-shadow(0 0 12px rgba(255,0,0,0.25));
 }
 
 h1 {
-  margin: 0;
-  font-size: 31px;
-  line-height: 1.05;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.subtitle {
-  margin: 10px 0 0;
-  color: #d0d0d0;
-  font-size: 14px;
-  line-height: 1.55;
-  max-width: 330px;
-}
-
-.tagline {
-  margin-top: 10px;
-  color: #ff4a4a;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.main-btn,
-.group-btn,
-.discord-btn,
-.discord-subbtn,
-.server-link {
-  display: block;
-  width: 100%;
-  text-decoration: none;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  border-radius: 16px;
-  font-weight: 700;
-  transition: 0.18s ease;
-}
-
-.main-btn {
-  margin-top: 18px;
-  padding: 15px 16px;
-  background: linear-gradient(90deg, #7f1010, #d11e1e);
-  color: #fff;
-  font-size: 15px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border: 1px solid rgba(255, 80, 80, 0.2);
-}
-
-.main-btn:hover,
-.group-btn:hover,
-.discord-btn:hover,
-.discord-subbtn:hover {
-  filter: brightness(1.08);
-  transform: translateY(-1px);
-}
-
-.note {
-  margin-top: 12px;
-  color: #9f9f9f;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.section-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  font-size: 24px;
   margin-bottom: 12px;
 }
 
-.section-title {
-  margin: 0;
-  font-size: 19px;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-}
-
-.pill {
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 70, 70, 0.18);
-  background: rgba(150, 0, 0, 0.14);
-  color: #ff9b9b;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.section-desc {
-  color: #a6a6a6;
+/* 🔥 PREMIUM MAIN BUTTON */
+.main-btn {
+  padding: 16px;
   font-size: 14px;
-  margin: 0 0 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 800;
+
+  background: linear-gradient(90deg,#a31212,#ff2f2f);
+  border: 1px solid rgba(255,80,80,0.45);
+
+  border-radius: 16px;
+  color: #fff;
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 28px rgba(255,0,0,0.45),
+    inset 0 0 12px rgba(255,60,60,0.25);
+
+  animation: pulseGlow 2.5s infinite ease-in-out;
 }
 
+/* Shine */
+.main-btn::after {
+  content:"";
+  position:absolute;
+  top:0;
+  left:-75%;
+  width:50%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent
+  );
+  transform:skewX(-20deg);
+}
+
+/* Hover + Tap */
+.main-btn:hover {
+  transform: translateY(-2px) scale(1.01);
+  filter: brightness(1.08);
+}
+
+.main-btn:active {
+  transform: scale(0.96);
+}
+
+/* Glow animation */
+@keyframes pulseGlow {
+  0% {
+    box-shadow:
+      0 8px 20px rgba(255,0,0,0.35),
+      inset 0 0 10px rgba(255,60,60,0.2);
+  }
+  50% {
+    box-shadow:
+      0 12px 35px rgba(255,0,0,0.6),
+      inset 0 0 18px rgba(255,80,80,0.35);
+  }
+  100% {
+    box-shadow:
+      0 8px 20px rgba(255,0,0,0.35),
+      inset 0 0 10px rgba(255,60,60,0.2);
+  }
+}
+
+/* Group Buttons */
 .group-btn {
-  padding: 13px 14px;
-  background: #171717;
-  color: #fff;
-  border: 1px solid #343434;
-  margin-bottom: 10px;
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.server-list {
-  display: grid;
-  gap: 8px;
-}
-
-.server-link {
-  padding: 13px 14px;
-  background: rgba(0,0,0,0.4);
-  border: 1px solid #262626;
-  color: #d6d6d6;
-  font-size: 14px;
-  text-align: left;
-}
-
-.server-link:hover {
-  border-color: #8a1e1e;
-  color: #ffffff;
-  background: rgba(25, 5, 5, 0.85);
-}
-
-.discord-preview {
-  background: #313338;
-  border: 1px solid #3e4047;
-  border-radius: 18px;
   padding: 14px;
-}
-
-.discord-header {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-}
-
-.discord-avatar {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #8a1111, #3a0707);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffb0b0;
-}
-
-.discord-avatar svg {
-  width: 28px;
-  height: 28px;
-}
-
-.discord-name {
-  font-weight: 700;
+  background: #1a1a1a;
+  border: 1px solid #4a1a1a;
   color: #fff;
-  margin-bottom: 4px;
+  border-radius: 14px;
+  margin-bottom: 10px;
 }
 
-.discord-text {
-  color: #d7d7d7;
-  font-size: 14px;
-  line-height: 1.45;
+/* Server Buttons */
+.server-link {
+  display:block;
+  padding:14px;
+  margin-top:8px;
+  background:#171717;
+  border:1px solid #3b3b3b;
+  border-radius:14px;
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
 }
 
-.discord-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
+/* Text */
+.section-title {
+  margin-bottom:10px;
+  font-size:18px;
 }
 
-.discord-btn {
-  width: auto;
-  padding: 10px 14px;
-  background: #5865F2;
-  color: #fff;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.note {
+  font-size:13px;
+  color:#ccc;
+  margin-top:10px;
+  line-height:1.6;
 }
+</style>
 
-.discord-subbtn {
-  width: auto;
-  padding: 10px 12px;
-  background: #4e5058;
-  color: #fff;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.small {
-  font-size: 13px;
-  line-height: 1.55;
-  color: #b7b7b7;
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 12px;
-  }
-
-  .brand-row {
-    align-items: center;
-  }
-
-  .logo-box {
-    width: 64px;
-    height: 64px;
-    min-width: 64px;
-  }
-
-  h1 {
-    font-size: 26px;
-  }
-
-  .dragon-bg {
-    width: 130px;
-    height: 260px;
-  }
-}
-```
-
-  </style>
 </head>
+
 <body>
-  <div class="container">
 
-```
+<div class="container">
+
 <div class="card hero">
-  <div class="dragon-bg">
-    <svg viewBox="0 0 260 520" fill="currentColor" aria-hidden="true">
-      <path d="M175 6c-22 13-46 38-60 70-17 8-31 22-44 43 15-5 28-7 39-3-9 16-14 31-18 46-17 6-30 16-42 31 18 0 31 1 43 6 0 23 8 41 25 58-10 31-6 56 8 79 0-24 9-46 27-64 23 5 44 0 64-14-10-6-18-13-23-23 28 1 51-7 74-27-23 0-40-5-54-15 29-17 46-42 56-76-16 12-34 22-53 26 8-26 3-53-15-80-5-8-17-22-27-33z"></path>
-      <path d="M111 400c15 18 26 41 26 67 0 16-4 30-10 43 18-15 31-38 31-67 0-25-12-47-31-64z" opacity="0.9"></path>
-    </svg>
-  </div>
+<img src="dragon.png" class="hero-logo">
 
-  <div class="brand-row">
-    <div class="logo-box">
-      <svg viewBox="0 0 260 520" fill="currentColor" aria-hidden="true">
-        <path d="M175 6c-22 13-46 38-60 70-17 8-31 22-44 43 15-5 28-7 39-3-9 16-14 31-18 46-17 6-30 16-42 31 18 0 31 1 43 6 0 23 8 41 25 58-10 31-6 56 8 79 0-24 9-46 27-64 23 5 44 0 64-14-10-6-18-13-23-23 28 1 51-7 74-27-23 0-40-5-54-15 29-17 46-42 56-76-16 12-34 22-53 26 8-26 3-53-15-80-5-8-17-22-27-33z"></path>
-        <path d="M111 400c15 18 26 41 26 67 0 16-4 30-10 43 18-15 31-38 31-67 0-25-12-47-31-64z" opacity="0.9"></path>
-      </svg>
-    </div>
+<h1>PRG Mobile Vote Hub</h1>
 
-    <div>
-      <div class="eyebrow">PRG Community</div>
-      <h1>Vote Hub</h1>
-      <div class="subtitle">One PRG-styled mobile hub for vote pages across all your servers and games.</div>
-      <div class="tagline">One click. All the links.</div>
-    </div>
-  </div>
+<button class="main-btn" onclick="openAll()">
+OPEN ALL PRG VOTE PAGES
+</button>
 
-  <button class="main-btn" onclick="openAll()">Open All PRG Vote Pages</button>
-  <div class="note">Best on desktop and Android. Some mobile browsers may block opening many tabs at once, so the game buttons below are included too.</div>
+<div class="note">
+Opens every PRG vote page. On some phones, browsers may block multiple tabs, so the individual game buttons are below too.<br><br>
+NOTE - This does not automatically vote for you, it's strictly just a all in one mobile-friendly vote hub with all our links.<br><br>
+Thank you for supporting PRG! &lt;3
 </div>
+</div>
+
+<!-- 7DTD -->
 
 <div class="card">
-  <div class="section-title-row">
-    <h2 class="section-title">7 Days To Die</h2>
-    <div class="pill">7DTD</div>
-  </div>
-  <p class="section-desc">3 PRG vote pages</p>
-  <button class="group-btn" onclick="openGroup(links['7d2d'])">Open All 7DTD Vote Pages</button>
-  <div class="server-list">
-    <a class="server-link" href="https://7daystodie-servers.com/server/90387/" target="_blank">Server 1</a>
-    <a class="server-link" href="https://7daystodie-servers.com/server/90388/" target="_blank">Server 2</a>
-    <a class="server-link" href="https://7daystodie-servers.com/server/90386/" target="_blank">Server 3</a>
-  </div>
+<div class="section-title">7 Days To Die</div>
+<button class="group-btn" onclick="openGroup(links7d2d)">Open All 7DTD Vote Pages</button>
+<a class="server-link" href="https://7daystodie-servers.com/server/90387/" target="_blank">X</a>
+<a class="server-link" href="https://7daystodie-servers.com/server/90388/" target="_blank">XL</a>
+<a class="server-link" href="https://7daystodie-servers.com/server/90386/" target="_blank">SH</a>
 </div>
+
+<!-- Conan -->
 
 <div class="card">
-  <div class="section-title-row">
-    <h2 class="section-title">Conan</h2>
-    <div class="pill">Conan</div>
-  </div>
-  <p class="section-desc">2 PRG vote pages</p>
-  <button class="group-btn" onclick="openGroup(links['conan'])">Open All Conan Vote Pages</button>
-  <div class="server-list">
-    <a class="server-link" href="https://conan-exiles.com/server/90870/" target="_blank">Server 1</a>
-    <a class="server-link" href="https://conan-exiles.com/server/90985/" target="_blank">Server 2</a>
-  </div>
+<div class="section-title">Conan</div>
+<button class="group-btn" onclick="openGroup(linksConan)">Open All Conan Vote Pages</button>
+<a class="server-link" href="https://conan-exiles.com/server/90870/" target="_blank">EL</a>
+<a class="server-link" href="https://conan-exiles.com/server/90985/" target="_blank">SEB</a>
 </div>
+
+<!-- Empyrion -->
 
 <div class="card">
-  <div class="section-title-row">
-    <h2 class="section-title">Empyrion</h2>
-    <div class="pill">EMP</div>
-  </div>
-  <p class="section-desc">1 PRG vote page</p>
-  <button class="group-btn" onclick="openGroup(links['empyrion'])">Open Empyrion Vote Page</button>
-  <div class="server-list">
-    <a class="server-link" href="https://empyrion-servers.com/server/65230/" target="_blank">Server 1</a>
-  </div>
+<div class="section-title">Empyrion</div>
+<a class="server-link" href="https://empyrion-servers.com/server/65230/" target="_blank">Empyrion</a>
 </div>
+
+<!-- Ark -->
 
 <div class="card">
-  <div class="section-title-row">
-    <h2 class="section-title">Ark</h2>
-    <div class="pill">Ark</div>
-  </div>
-  <p class="section-desc">3 PRG vote pages</p>
-  <button class="group-btn" onclick="openGroup(links['ark'])">Open All Ark Vote Pages</button>
-  <div class="server-list">
-    <a class="server-link" href="https://ark-servers.net/server/331423/" target="_blank">Server 1</a>
-    <a class="server-link" href="https://ark-servers.net/server/330408/" target="_blank">Server 2</a>
-    <a class="server-link" href="https://ark-servers.net/server/330422/" target="_blank">Server 3</a>
-  </div>
+<div class="section-title">Ark</div>
+<button class="group-btn" onclick="openGroup(linksArk)">Open All Ark Vote Pages</button>
+<a class="server-link" href="https://ark-servers.net/server/331423/" target="_blank">Rag</a>
+<a class="server-link" href="https://ark-servers.net/server/330408/" target="_blank">Fjordur</a>
+<a class="server-link" href="https://ark-servers.net/server/330422/" target="_blank">Gen2</a>
 </div>
 
-<div class="card">
-  <div class="section-title-row">
-    <h2 class="section-title">Discord Button Version</h2>
-    <div class="pill">Preview</div>
-  </div>
-
-  <div class="discord-preview">
-    <div class="discord-header">
-      <div class="discord-avatar">
-        <svg viewBox="0 0 260 520" fill="currentColor" aria-hidden="true">
-          <path d="M175 6c-22 13-46 38-60 70-17 8-31 22-44 43 15-5 28-7 39-3-9 16-14 31-18 46-17 6-30 16-42 31 18 0 31 1 43 6 0 23 8 41 25 58-10 31-6 56 8 79 0-24 9-46 27-64 23 5 44 0 64-14-10-6-18-13-23-23 28 1 51-7 74-27-23 0-40-5-54-15 29-17 46-42 56-76-16 12-34 22-53 26 8-26 3-53-15-80-5-8-17-22-27-33z"></path>
-          <path d="M111 400c15 18 26 41 26 67 0 16-4 30-10 43 18-15 31-38 31-67 0-25-12-47-31-64z" opacity="0.9"></path>
-        </svg>
-      </div>
-      <div>
-        <div class="discord-name">PRG Community</div>
-        <div class="discord-text">Mobile-friendly vote hub for all PRG servers.</div>
-        <div class="discord-buttons">
-          <a class="discord-btn" href="#" onclick="alert('Replace this with your live PRG Vote Hub link in Discord.'); return false;">Open Vote Hub</a>
-          <a class="discord-subbtn" href="#" onclick="alert('Optional: make this point to a 7DTD-only page later.'); return false;">7DTD</a>
-          <a class="discord-subbtn" href="#" onclick="alert('Optional: make this point to a Conan-only page later.'); return false;">Conan</a>
-          <a class="discord-subbtn" href="#" onclick="alert('Optional: make this point to an Ark-only page later.'); return false;">Ark</a>
-          <a class="discord-subbtn" href="#" onclick="alert('Optional: make this point to an Empyrion-only page later.'); return false;">Empyrion</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
-<div class="card">
-  <div class="section-title-row">
-    <h2 class="section-title">Notes</h2>
-    <div class="pill">Info</div>
-  </div>
-  <div class="small">
-    This page opens the same PRG vote links as your extension, but it does not auto-click the Vote button, checkbox, or Steam prompts. It’s the mobile-friendly launcher version.
-  </div>
-</div>
-```
+<script>
+const links7d2d = [
+"https://7daystodie-servers.com/server/90387/",
+"https://7daystodie-servers.com/server/90388/",
+"https://7daystodie-servers.com/server/90386/"
+];
 
-  </div>
+const linksConan = [
+"https://conan-exiles.com/server/90870/",
+"https://conan-exiles.com/server/90985/"
+];
 
-  <script>
-    const links = {
-      "7d2d": [
-        "https://7daystodie-servers.com/server/90387/",
-        "https://7daystodie-servers.com/server/90388/",
-        "https://7daystodie-servers.com/server/90386/"
-      ],
-      "conan": [
-        "https://conan-exiles.com/server/90870/",
-        "https://conan-exiles.com/server/90985/"
-      ],
-      "empyrion": [
-        "https://empyrion-servers.com/server/65230/"
-      ],
-      "ark": [
-        "https://ark-servers.net/server/331423/",
-        "https://ark-servers.net/server/330408/",
-        "https://ark-servers.net/server/330422/"
-      ]
-    };
+const linksArk = [
+"https://ark-servers.net/server/331423/",
+"https://ark-servers.net/server/330408/",
+"https://ark-servers.net/server/330422/"
+];
 
-    function openGroup(group) {
-      group.forEach((url, index) => {
-        setTimeout(() => {
-          window.open(url, "_blank");
-        }, index * 300);
-      });
-    }
+const allLinks = [
+...links7d2d,
+...linksConan,
+"https://empyrion-servers.com/server/65230/",
+...linksArk
+];
 
-    function openAll() {
-      openGroup([
-        ...links["7d2d"],
-        ...links["conan"],
-        ...links["empyrion"],
-        ...links["ark"]
-      ]);
-    }
-  </script>
+function openGroup(group){
+group.forEach((url,i)=>{
+setTimeout(()=>window.open(url,"_blank"), i*300);
+});
+}
+
+function openAll(){
+openGroup(allLinks);
+}
+</script>
 
 </body>
 </html>
