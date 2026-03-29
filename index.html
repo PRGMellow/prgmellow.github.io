@@ -29,6 +29,11 @@ body {
   border-radius: 16px;
   padding: 14px;
   margin-bottom: 10px;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(255, 70, 70, 0.35);
 }
 
 /* HERO */
@@ -47,11 +52,42 @@ body {
   pointer-events: none;
 }
 
-/* GLOWING DRAGON */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(255, 0, 0, 0.10), transparent 65%);
+  filter: blur(8px);
+  animation: heroPulse 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes heroPulse {
+  0% {
+    opacity: 0.55;
+    transform: translateX(-50%) scale(0.95);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translateX(-50%) scale(1.06);
+  }
+  100% {
+    opacity: 0.55;
+    transform: translateX(-50%) scale(0.95);
+  }
+}
+
+/* DRAGON */
 .hero-logo {
   width: 92px;
   margin-bottom: 10px;
   animation: dragonGlow 2.8s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes dragonGlow {
@@ -78,10 +114,50 @@ body {
 h1 {
   font-size: 22px;
   margin: 0 0 12px;
+  position: relative;
+  z-index: 1;
+}
+
+/* SECTION TITLES */
+.section-title {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffb3b3;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  padding-bottom: 6px;
+  transition: all 0.2s ease;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, #ff3b3b, transparent);
+  opacity: 0.7;
+  transition: all 0.25s ease;
+}
+
+.card:hover .section-title {
+  color: #ffd6d6;
+}
+
+.card:hover .section-title::after {
+  width: 55px;
+  opacity: 1;
 }
 
 /* BUTTONS */
-.main-btn, .group-btn, .action-btn {
+.main-btn,
+.group-btn,
+.action-btn {
   width: 100%;
   padding: 13px;
   margin-bottom: 10px;
@@ -92,13 +168,15 @@ h1 {
   color: #fff;
   cursor: pointer;
   transition: all 0.15s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .main-btn:hover,
 .group-btn:hover,
 .action-btn:hover {
   transform: translateY(-1px);
-  filter: brightness(1.05);
+  filter: brightness(1.08);
 }
 
 .main-btn:active,
@@ -109,11 +187,13 @@ h1 {
 
 .main-btn {
   background: linear-gradient(90deg, #a31212, #ff2f2f);
+  letter-spacing: 0.12em;
 }
 
 .group-btn {
   background: linear-gradient(90deg, #5c1010, #b32020);
   font-size: 12px;
+  letter-spacing: 0.1em;
 }
 
 .action-btn {
@@ -141,20 +221,19 @@ h1 {
   transform: translateY(-1px);
 }
 
-/* BOXES */
-.note, .warning, .status, .helper-box {
+/* NOTE */
+.note {
   margin-top: 12px;
   padding: 12px;
   border-radius: 10px;
   font-size: 13px;
   line-height: 1.65;
-}
-
-.note {
   background: linear-gradient(180deg, rgba(18,18,18,0.98), rgba(10,10,10,0.98));
   border: 1px solid rgba(255,255,255,0.05);
   text-align: left;
   color: #e7e7e7;
+  position: relative;
+  z-index: 1;
 }
 
 .note p {
@@ -172,6 +251,17 @@ h1 {
   background: rgba(255, 30, 30, 0.07);
   border-radius: 6px;
   color: #ffd0d0;
+}
+
+/* WARNING + HELPERS */
+.warning,
+.status,
+.helper-box {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .warning {
@@ -220,6 +310,11 @@ h1 {
   .helper-box {
     font-size: 12px;
   }
+
+  .hero::after {
+    width: 220px;
+    height: 220px;
+  }
 }
 </style>
 </head>
@@ -267,27 +362,33 @@ Then use <strong>OPEN ALL VOTES</strong>.
 
 </div>
 
-<!-- SECTIONS -->
-
+<!-- 7DTD -->
 <div class="card">
+<h3 class="section-title">🧟 7 Days to Die</h3>
 <button class="group-btn" onclick="handleOpen(links7d2d)">OPEN ALL 7DTD</button>
 <a class="server-link" href="https://7daystodie-servers.com/server/90387/" target="_blank" rel="noopener noreferrer">X</a>
 <a class="server-link" href="https://7daystodie-servers.com/server/90388/" target="_blank" rel="noopener noreferrer">XL</a>
 <a class="server-link" href="https://7daystodie-servers.com/server/90386/" target="_blank" rel="noopener noreferrer">SH</a>
 </div>
 
+<!-- CONAN -->
 <div class="card">
+<h3 class="section-title">⚔️ Conan Exiles</h3>
 <button class="group-btn" onclick="handleOpen(linksConan)">OPEN ALL CONAN</button>
 <a class="server-link" href="https://conan-exiles.com/server/90870/" target="_blank" rel="noopener noreferrer">EL</a>
 <a class="server-link" href="https://conan-exiles.com/server/90985/" target="_blank" rel="noopener noreferrer">SEB</a>
 </div>
 
+<!-- EMPYRION -->
 <div class="card">
+<h3 class="section-title">🚀 Empyrion</h3>
 <button class="group-btn" onclick="handleOpen(linksEmpyrion)">OPEN ALL EMPYRION</button>
 <a class="server-link" href="https://empyrion-servers.com/server/65230/" target="_blank" rel="noopener noreferrer">Empyrion</a>
 </div>
 
+<!-- ARK -->
 <div class="card">
+<h3 class="section-title">🦖 ARK</h3>
 <button class="group-btn" onclick="handleOpen(linksArk)">OPEN ALL ARK</button>
 <a class="server-link" href="https://ark-servers.net/server/331423/" target="_blank" rel="noopener noreferrer">Rag</a>
 <a class="server-link" href="https://ark-servers.net/server/330408/" target="_blank" rel="noopener noreferrer">Fjordur</a>
