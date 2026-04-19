@@ -34,13 +34,13 @@ body {
 .hero {
   text-align: center;
   border-radius: 18px;
-  padding: 16px;
+  padding: 20px 16px 16px;
   margin-bottom: 12px;
   position: relative;
   background: linear-gradient(180deg, #1b1b1b, #0a0a0a);
   box-shadow:
-    0 0 40px rgba(255,40,40,0.06),
-    0 0 80px rgba(255,40,40,0.04);
+    0 0 28px rgba(255,40,40,0.05),
+    0 0 56px rgba(255,40,40,0.03);
 }
 
 .hero::before {
@@ -57,7 +57,9 @@ body {
   width: 88px;
 }
 
-h1 { margin: 6px 0; }
+h1 {
+  margin: 6px 0;
+}
 
 .subtitle {
   font-size: 13px;
@@ -71,12 +73,24 @@ h1 { margin: 6px 0; }
 }
 
 @keyframes glowPulse {
-  0% { text-shadow: 0 0 4px rgba(255,50,50,0.2); }
-  50% { text-shadow: 0 0 14px rgba(255,60,60,0.45); }
-  100% { text-shadow: 0 0 4px rgba(255,50,50,0.2); }
+  0% { text-shadow: 0 0 4px rgba(255,50,50,0.16); }
+  50% { text-shadow: 0 0 9px rgba(255,60,60,0.28); }
+  100% { text-shadow: 0 0 4px rgba(255,50,50,0.16); }
 }
 
-/* BUTTON */
+/* BUTTONS + LINKS */
+.main-btn,
+.group-btn,
+.server-link,
+.card {
+  transition: 0.18s ease;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .main-btn {
   width: 100%;
   padding: 14px;
@@ -87,6 +101,11 @@ h1 { margin: 6px 0; }
   color: #fff;
   cursor: pointer;
   animation: buttonPulse 4s ease-in-out infinite;
+}
+
+.main-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
 }
 
 @keyframes buttonPulse {
@@ -120,6 +139,10 @@ h1 { margin: 6px 0; }
   margin-bottom: 12px;
 }
 
+.card:hover {
+  transform: translateY(-1px);
+}
+
 .section-title {
   font-size: 14px;
   color: #ffb3b3;
@@ -127,12 +150,16 @@ h1 { margin: 6px 0; }
 
 .server-link {
   display: block;
-  padding: 10px;
-  margin-top: 6px;
+  padding: 11px 12px;
+  margin-top: 7px;
   background: #1a1a1a;
   border-radius: 10px;
   text-decoration: none;
   color: #fff;
+}
+
+.server-link:hover {
+  background: #222;
 }
 
 .group-btn {
@@ -143,6 +170,11 @@ h1 { margin: 6px 0; }
   border-radius: 12px;
   color: #fff;
   border: none;
+  cursor: pointer;
+}
+
+.group-btn:hover {
+  filter: brightness(1.06);
 }
 
 </style>
@@ -157,7 +189,7 @@ h1 { margin: 6px 0; }
 <img src="dragon.png" class="hero-logo">
 
 <h1>PRG Vote Hub</h1>
-<p class="subtitle">One place for all PRG voting links</p>
+<p class="subtitle">All voting links in one place</p>
 
 <p class="support-line">Thank you for supporting PRG! ❤️</p>
 
@@ -179,32 +211,32 @@ If tabs don’t open, use the game buttons below. All voting is done manually.
 <div class="card">
 <h3 class="section-title">🧟 7 Days to Die</h3>
 <button class="group-btn" onclick="handleOpen(links7d2d)">OPEN ALL 7DTD</button>
-<a class="server-link" href="https://7daystodie-servers.com/server/90387/" target="_blank">X</a>
-<a class="server-link" href="https://7daystodie-servers.com/server/90388/" target="_blank">XL</a>
-<a class="server-link" href="https://7daystodie-servers.com/server/90386/" target="_blank">SH</a>
+<a class="server-link" href="https://7daystodie-servers.com/server/90387/" target="_blank" rel="noopener noreferrer">X</a>
+<a class="server-link" href="https://7daystodie-servers.com/server/90388/" target="_blank" rel="noopener noreferrer">XL</a>
+<a class="server-link" href="https://7daystodie-servers.com/server/90386/" target="_blank" rel="noopener noreferrer">SH</a>
 </div>
 
 <!-- Conan -->
 <div class="card">
 <h3 class="section-title">⚔️ Conan Exiles</h3>
 <button class="group-btn" onclick="handleOpen(linksConan)">OPEN ALL CONAN</button>
-<a class="server-link" href="https://conan-exiles.com/server/90870/" target="_blank">EL</a>
-<a class="server-link" href="https://conan-exiles.com/server/90985/" target="_blank">SEB</a>
+<a class="server-link" href="https://conan-exiles.com/server/90870/" target="_blank" rel="noopener noreferrer">EL</a>
+<a class="server-link" href="https://conan-exiles.com/server/90985/" target="_blank" rel="noopener noreferrer">SEB</a>
 </div>
 
 <!-- Empyrion -->
 <div class="card">
 <h3 class="section-title">🚀 Empyrion</h3>
-<a class="server-link" href="https://empyrion-servers.com/server/65230/" target="_blank">Empyrion</a>
+<a class="server-link" href="https://empyrion-servers.com/server/65230/" target="_blank" rel="noopener noreferrer">Empyrion</a>
 </div>
 
 <!-- Ark -->
 <div class="card">
 <h3 class="section-title">🦖 ARK</h3>
 <button class="group-btn" onclick="handleOpen(linksArk)">OPEN ALL ARK</button>
-<a class="server-link" href="https://ark-servers.net/server/331423/" target="_blank">Rag</a>
-<a class="server-link" href="https://ark-servers.net/server/330408/" target="_blank">Fjordur</a>
-<a class="server-link" href="https://ark-servers.net/server/330422/" target="_blank">Gen2</a>
+<a class="server-link" href="https://ark-servers.net/server/331423/" target="_blank" rel="noopener noreferrer">Rag</a>
+<a class="server-link" href="https://ark-servers.net/server/330408/" target="_blank" rel="noopener noreferrer">Fjordur</a>
+<a class="server-link" href="https://ark-servers.net/server/330422/" target="_blank" rel="noopener noreferrer">Gen2</a>
 </div>
 
 </div>
@@ -235,7 +267,11 @@ const allLinks = [
 ];
 
 function handleOpen(links) {
-  links.forEach(url => window.open(url, "_blank"));
+  links.forEach((url, index) => {
+    setTimeout(() => {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }, index * 150);
+  });
 }
 </script>
 
