@@ -178,26 +178,11 @@ h1 {
 }
 
 @media (max-width: 560px) {
-  .container {
-    padding: 10px;
-  }
-
-  .hero,
-  .card {
-    border-radius: 16px;
-  }
-
-  .hero {
-    padding: 18px 14px 14px;
-  }
-
-  .hero-logo {
-    width: 82px;
-  }
-
-  h1 {
-    font-size: 25px;
-  }
+  .container { padding: 10px; }
+  .hero, .card { border-radius: 16px; }
+  .hero { padding: 18px 14px 14px; }
+  .hero-logo { width: 82px; }
+  h1 { font-size: 25px; }
 }
 </style>
 </head>
@@ -224,19 +209,14 @@ h1 {
     </div>
   </div>
 
+  <!-- Order: 7DTD, Empyrion, ARK, Rust, Conan -->
+
   <div class="card">
     <h3 class="section-title">🧟 7 Days to Die</h3>
     <button class="group-btn" onclick="handleOpen(links7d2d)">OPEN ALL 7DTD</button>
     <a class="server-link" href="https://7daystodie-servers.com/server/90387/" target="_blank" rel="noopener noreferrer">X</a>
     <a class="server-link" href="https://7daystodie-servers.com/server/90388/" target="_blank" rel="noopener noreferrer">XL</a>
     <a class="server-link" href="https://7daystodie-servers.com/server/90386/" target="_blank" rel="noopener noreferrer">SH</a>
-  </div>
-
-  <div class="card">
-    <h3 class="section-title">⚔️ Conan Exiles</h3>
-    <button class="group-btn" onclick="handleOpen(linksConan)">OPEN ALL CONAN</button>
-    <a class="server-link" href="https://conan-exiles.com/server/90870/" target="_blank" rel="noopener noreferrer">EL</a>
-    <a class="server-link" href="https://conan-exiles.com/server/90985/" target="_blank" rel="noopener noreferrer">SEB</a>
   </div>
 
   <div class="card">
@@ -257,6 +237,13 @@ h1 {
     <a class="single-btn" href="https://rust-servers.net/server/177767/" target="_blank" rel="noopener noreferrer">VOTE RUST</a>
   </div>
 
+  <div class="card">
+    <h3 class="section-title">⚔️ Conan Exiles</h3>
+    <button class="group-btn" onclick="handleOpen(linksConan)">OPEN ALL CONAN</button>
+    <a class="server-link" href="https://conan-exiles.com/server/90870/" target="_blank" rel="noopener noreferrer">EL</a>
+    <a class="server-link" href="https://conan-exiles.com/server/90985/" target="_blank" rel="noopener noreferrer">SEB</a>
+  </div>
+
 </div>
 
 <script>
@@ -266,23 +253,23 @@ const links7d2d = [
   "https://7daystodie-servers.com/server/90386/"
 ];
 
-const linksConan = [
-  "https://conan-exiles.com/server/90870/",
-  "https://conan-exiles.com/server/90985/"
-];
-
 const linksArk = [
   "https://ark-servers.net/server/331423/",
   "https://ark-servers.net/server/330408/",
   "https://ark-servers.net/server/330422/"
 ];
 
+const linksConan = [
+  "https://conan-exiles.com/server/90870/",
+  "https://conan-exiles.com/server/90985/"
+];
+
 const allLinks = [
-...links7d2d,
-...linksConan,
-"https://empyrion-servers.com/server/65230/",
-...linksArk,
-"https://rust-servers.net/server/177767/"
+  ...links7d2d,
+  "https://empyrion-servers.com/server/65230/",
+  ...linksArk,
+  "https://rust-servers.net/server/177767/",
+  ...linksConan
 ];
 
 function handleOpen(links) {
