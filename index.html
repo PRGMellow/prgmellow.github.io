@@ -12,13 +12,13 @@
   --bg-1: #111111;
   --bg-2: #050505;
   --panel-1: #1b1b1b;
-  --panel-2: #0a0a0a;
-  --red-1: #9f1111;
+  --panel-2: #070707;
+  --red-1: #b80f0f;
   --red-2: #ff2d2d;
   --text: #ffffff;
   --muted: #d9caca;
   --notice-bg: rgba(56, 20, 0, 0.92);
-  --notice-border: rgba(255, 153, 51, 0.35);
+  --notice-border: rgba(255, 153, 51, 0.4);
 }
 
 body {
@@ -47,7 +47,7 @@ body {
 
 .hero {
   text-align: center;
-  padding: 20px 16px 16px;
+  padding: 22px 16px 18px;
   margin-bottom: 12px;
   position: relative;
   overflow: hidden;
@@ -78,9 +78,21 @@ h1 {
 }
 
 .subtitle {
-  margin: 0;
+  margin: 0 0 12px;
   font-size: 13px;
   color: #e9c4c4;
+}
+
+.quick-info {
+  margin: 12px 0 14px;
+  display: grid;
+  gap: 7px;
+  font-size: 14px;
+  color: #f2dede;
+}
+
+.quick-info div {
+  line-height: 1.35;
 }
 
 .support-line {
@@ -102,6 +114,7 @@ h1 {
   background: var(--notice-bg);
   border: 1px solid var(--notice-border);
   font-size: 13px;
+  line-height: 1.35;
 }
 
 .main-btn,
@@ -110,28 +123,61 @@ h1 {
   width: 100%;
   color: #fff;
   border: none;
-  border-radius: 12px;
   cursor: pointer;
-  font-weight: 800;
+  font-weight: 900;
 }
 
-.main-btn,
-.single-btn {
-  padding: 14px;
-  background: linear-gradient(90deg, var(--red-1), var(--red-2));
-  animation: buttonPulse 4s ease-in-out infinite;
+.main-btn {
+  padding: 18px;
+  font-size: 17px;
+  letter-spacing: 0.6px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #ff1f1f, #ff3b3b);
+  box-shadow:
+    0 0 25px rgba(255, 40, 40, 0.45),
+    0 0 60px rgba(255, 40, 40, 0.25);
+  margin-top: 14px;
+  transition: all 0.2s ease;
+  animation: pulseGlow 2.8s ease-in-out infinite;
 }
 
-@keyframes buttonPulse {
-  0% { box-shadow: 0 6px 16px rgba(255, 30, 30, 0.14); }
-  50% { box-shadow: 0 0 14px rgba(255, 50, 50, 0.28); }
-  100% { box-shadow: 0 6px 16px rgba(255, 30, 30, 0.14); }
+.main-btn:hover {
+  transform: scale(1.04);
+  box-shadow:
+    0 0 35px rgba(255, 60, 60, 0.65),
+    0 0 80px rgba(255, 60, 60, 0.35);
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow:
+      0 0 18px rgba(255, 40, 40, 0.35),
+      0 0 40px rgba(255, 40, 40, 0.18);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(255, 60, 60, 0.6),
+      0 0 80px rgba(255, 60, 60, 0.3);
+  }
+  100% {
+    box-shadow:
+      0 0 18px rgba(255, 40, 40, 0.35),
+      0 0 40px rgba(255, 40, 40, 0.18);
+  }
 }
 
 .fallback-line {
   font-size: 12px;
   color: var(--muted);
-  margin-top: 10px;
+  margin-top: 12px;
+  line-height: 1.35;
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  margin: 16px 0 2px;
+  background: linear-gradient(to right, transparent, rgba(255, 40, 40, 0.45), transparent);
 }
 
 .card {
@@ -151,7 +197,12 @@ h1 {
 .group-btn {
   padding: 12px;
   margin-bottom: 10px;
+  border-radius: 12px;
   background: linear-gradient(90deg, #5c1010, #b32020);
+}
+
+.single-btn {
+  background: linear-gradient(90deg, var(--red-1), var(--red-2));
 }
 
 .server-link,
@@ -172,17 +223,31 @@ h1 {
 
 .server-link:hover,
 .single-btn:hover,
-.main-btn:hover,
 .group-btn:hover {
-  filter: brightness(1.06);
+  filter: brightness(1.08);
+}
+
+.bottom-note {
+  text-align: center;
+  font-size: 13px;
+  color: #f2dede;
+  margin: 4px 0 14px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255, 45, 45, 0.08);
+  border: 1px solid rgba(255, 45, 45, 0.18);
 }
 
 @media (max-width: 560px) {
   .container { padding: 10px; }
   .hero, .card { border-radius: 16px; }
-  .hero { padding: 18px 14px 14px; }
+  .hero { padding: 18px 14px 16px; }
   .hero-logo { width: 82px; }
   h1 { font-size: 25px; }
+  .main-btn {
+    font-size: 15px;
+    padding: 17px;
+  }
 }
 </style>
 </head>
@@ -194,57 +259,65 @@ h1 {
     <img src="dragon.png" class="hero-logo" alt="PRG Dragon Logo">
 
     <h1>PRG Vote Hub</h1>
-    <p class="subtitle">All voting links in one place</p>
+    <p class="subtitle">All vote links for every game in one place</p>
+
+    <div class="quick-info">
+      <div>👉 Click OPEN ALL VOTES → vote on each site → earn rewards</div>
+      <div>📱 Open in browser (Discord may block links)</div>
+    </div>
 
     <p class="support-line">Thank you for supporting PRG ❤️</p>
 
     <div class="premium-notice">
-      Allow popups — Open All Votes may not open every tab.
+      ⚠️ Allow popups — OPEN ALL may not open every tab otherwise.
     </div>
 
-    <button class="main-btn" onclick="handleOpen(allLinks)">OPEN ALL VOTES</button>
+    <button class="main-btn" onclick="handleOpen(allLinks)">
+      🔥 OPEN ALL VOTES 🔥
+    </button>
 
     <div class="fallback-line">
-      If tabs don’t open, use the game buttons below. All voting is done manually.
+      If tabs don’t open, use the game buttons below.
     </div>
+
+    <hr class="divider">
   </div>
 
-  <!-- 7DTD -->
   <div class="card">
     <h3 class="section-title">🧟 7 Days to Die</h3>
-    <button class="group-btn" onclick="handleOpen(links7d2d)">OPEN 7DTD</button>
+    <button class="group-btn" onclick="handleOpen(links7d2d)">OPEN ALL 7DTD VOTES</button>
     <a class="server-link" href="https://7daystodie-servers.com/server/90387/" target="_blank">X</a>
     <a class="server-link" href="https://7daystodie-servers.com/server/90388/" target="_blank">XL</a>
     <a class="server-link" href="https://7daystodie-servers.com/server/90386/" target="_blank">SH</a>
   </div>
 
-  <!-- Empyrion -->
   <div class="card">
     <h3 class="section-title">🚀 Empyrion</h3>
-    <a class="single-btn" href="https://empyrion-servers.com/server/65230/" target="_blank">OPEN EMPYRION</a>
+    <a class="single-btn" href="https://empyrion-servers.com/server/65230/" target="_blank">OPEN EMPYRION VOTE</a>
   </div>
 
-  <!-- ARK -->
   <div class="card">
     <h3 class="section-title">🦖 ARK</h3>
-    <button class="group-btn" onclick="handleOpen(linksArk)">OPEN ARK</button>
+    <button class="group-btn" onclick="handleOpen(linksArk)">OPEN ALL ARK VOTES</button>
     <a class="server-link" href="https://ark-servers.net/server/331423/" target="_blank">Rag</a>
     <a class="server-link" href="https://ark-servers.net/server/330408/" target="_blank">Fjordur</a>
     <a class="server-link" href="https://ark-servers.net/server/330422/" target="_blank">Gen2</a>
   </div>
 
-  <!-- Rust -->
   <div class="card">
     <h3 class="section-title">☣️ Rust</h3>
-    <a class="single-btn" href="https://rust-servers.net/server/177767/" target="_blank">OPEN RUST</a>
+    <a class="single-btn" href="https://rust-servers.net/server/177767/" target="_blank">OPEN RUST VOTE</a>
   </div>
 
-  <!-- Conan -->
   <div class="card">
     <h3 class="section-title">⚔️ Conan Exiles</h3>
-    <button class="group-btn" onclick="handleOpen(linksConan)">OPEN CONAN</button>
+    <button class="group-btn" onclick="handleOpen(linksConan)">OPEN ALL CONAN VOTES</button>
     <a class="server-link" href="https://conan-exiles.com/server/90870/" target="_blank">EL</a>
     <a class="server-link" href="https://conan-exiles.com/server/90985/" target="_blank">SEB</a>
+  </div>
+
+  <div class="bottom-note">
+    ⚠️ Voting is NOT automatic — you must vote manually.
   </div>
 
 </div>
