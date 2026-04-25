@@ -78,43 +78,9 @@ h1 {
 }
 
 .subtitle {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   font-size: 13px;
   color: #e9c4c4;
-}
-
-.quick-info {
-  margin: 12px 0 14px;
-  display: grid;
-  gap: 7px;
-  font-size: 14px;
-  color: #f2dede;
-}
-
-.quick-info div {
-  line-height: 1.35;
-}
-
-.support-line {
-  margin: 14px 0 16px;
-  font-size: 15px;
-  animation: glowPulse 3.5s ease-in-out infinite;
-}
-
-@keyframes glowPulse {
-  0% { text-shadow: 0 0 4px rgba(255, 50, 50, 0.18); }
-  50% { text-shadow: 0 0 10px rgba(255, 60, 60, 0.34); }
-  100% { text-shadow: 0 0 4px rgba(255, 50, 50, 0.18); }
-}
-
-.premium-notice {
-  margin: 0 0 14px;
-  padding: 12px;
-  border-radius: 14px;
-  background: var(--notice-bg);
-  border: 1px solid var(--notice-border);
-  font-size: 13px;
-  line-height: 1.35;
 }
 
 .main-btn,
@@ -136,7 +102,6 @@ h1 {
   box-shadow:
     0 0 25px rgba(255, 40, 40, 0.45),
     0 0 60px rgba(255, 40, 40, 0.25);
-  margin-top: 14px;
   transition: all 0.2s ease;
   animation: pulseGlow 2.8s ease-in-out infinite;
 }
@@ -146,6 +111,12 @@ h1 {
   box-shadow:
     0 0 35px rgba(255, 60, 60, 0.65),
     0 0 80px rgba(255, 60, 60, 0.35);
+}
+
+.main-btn:disabled {
+  cursor: default;
+  opacity: 0.75;
+  transform: none;
 }
 
 @keyframes pulseGlow {
@@ -164,6 +135,28 @@ h1 {
       0 0 18px rgba(255, 40, 40, 0.35),
       0 0 40px rgba(255, 40, 40, 0.18);
   }
+}
+
+.quick-info {
+  margin: 14px 0;
+  display: grid;
+  gap: 7px;
+  font-size: 14px;
+  color: #f2dede;
+}
+
+.quick-info div {
+  line-height: 1.35;
+}
+
+.premium-notice {
+  margin: 0 0 14px;
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--notice-bg);
+  border: 1px solid var(--notice-border);
+  font-size: 13px;
+  line-height: 1.35;
 }
 
 .fallback-line {
@@ -236,6 +229,7 @@ h1 {
   border-radius: 14px;
   background: rgba(255, 45, 45, 0.08);
   border: 1px solid rgba(255, 45, 45, 0.18);
+  line-height: 1.5;
 }
 
 @media (max-width: 560px) {
@@ -244,6 +238,7 @@ h1 {
   .hero { padding: 18px 14px 16px; }
   .hero-logo { width: 82px; }
   h1 { font-size: 25px; }
+
   .main-btn {
     font-size: 15px;
     padding: 17px;
@@ -261,23 +256,21 @@ h1 {
     <h1>PRG Vote Hub</h1>
     <p class="subtitle">All vote links for every game in one place</p>
 
-    <div class="quick-info">
-      <div>👉 Click OPEN ALL VOTES → vote on each site → earn rewards</div>
-      <div>📱 Open in browser (Discord may block links)</div>
-    </div>
-
-    <p class="support-line">Thank you for supporting PRG ❤️</p>
-
-    <div class="premium-notice">
-      ⚠️ Allow popups — OPEN ALL may not open every tab otherwise.
-    </div>
-
-    <button class="main-btn" onclick="handleOpen(allLinks)">
+    <button class="main-btn" onclick="openVotes(this, allLinks, '🔥 OPEN ALL VOTES 🔥')">
       🔥 OPEN ALL VOTES 🔥
     </button>
 
+    <div class="quick-info">
+      <div>👉 Vote on each site → earn rewards for each game</div>
+      <div>📱 Open in browser (Discord may block links)</div>
+    </div>
+
+    <div class="premium-notice">
+      ⚠️ Allow popups so OPEN ALL can launch every vote site.
+    </div>
+
     <div class="fallback-line">
-      If tabs don’t open, use the game buttons below.
+      If tabs don’t open, click the game sections below.
     </div>
 
     <hr class="divider">
@@ -285,7 +278,9 @@ h1 {
 
   <div class="card">
     <h3 class="section-title">🧟 7 Days to Die</h3>
-    <button class="group-btn" onclick="handleOpen(links7d2d)">OPEN ALL 7DTD VOTES</button>
+    <button class="group-btn" onclick="openVotes(this, links7d2d, 'OPEN ALL 7DTD VOTES')">
+      OPEN ALL 7DTD VOTES
+    </button>
     <a class="server-link" href="https://7daystodie-servers.com/server/90387/" target="_blank">X</a>
     <a class="server-link" href="https://7daystodie-servers.com/server/90388/" target="_blank">XL</a>
     <a class="server-link" href="https://7daystodie-servers.com/server/90386/" target="_blank">SH</a>
@@ -293,12 +288,16 @@ h1 {
 
   <div class="card">
     <h3 class="section-title">🚀 Empyrion</h3>
-    <a class="single-btn" href="https://empyrion-servers.com/server/65230/" target="_blank">OPEN EMPYRION VOTE</a>
+    <a class="single-btn" href="https://empyrion-servers.com/server/65230/" target="_blank">
+      OPEN EMPYRION VOTE
+    </a>
   </div>
 
   <div class="card">
     <h3 class="section-title">🦖 ARK</h3>
-    <button class="group-btn" onclick="handleOpen(linksArk)">OPEN ALL ARK VOTES</button>
+    <button class="group-btn" onclick="openVotes(this, linksArk, 'OPEN ALL ARK VOTES')">
+      OPEN ALL ARK VOTES
+    </button>
     <a class="server-link" href="https://ark-servers.net/server/331423/" target="_blank">Rag</a>
     <a class="server-link" href="https://ark-servers.net/server/330408/" target="_blank">Fjordur</a>
     <a class="server-link" href="https://ark-servers.net/server/330422/" target="_blank">Gen2</a>
@@ -306,18 +305,23 @@ h1 {
 
   <div class="card">
     <h3 class="section-title">☣️ Rust</h3>
-    <a class="single-btn" href="https://rust-servers.net/server/177767/" target="_blank">OPEN RUST VOTE</a>
+    <a class="single-btn" href="https://rust-servers.net/server/177767/" target="_blank">
+      OPEN RUST VOTE
+    </a>
   </div>
 
   <div class="card">
     <h3 class="section-title">⚔️ Conan Exiles</h3>
-    <button class="group-btn" onclick="handleOpen(linksConan)">OPEN ALL CONAN VOTES</button>
+    <button class="group-btn" onclick="openVotes(this, linksConan, 'OPEN ALL CONAN VOTES')">
+      OPEN ALL CONAN VOTES
+    </button>
     <a class="server-link" href="https://conan-exiles.com/server/90870/" target="_blank">EL</a>
     <a class="server-link" href="https://conan-exiles.com/server/90985/" target="_blank">SEB</a>
   </div>
 
   <div class="bottom-note">
-    ⚠️ Voting is NOT automatic — you must vote manually.
+    ⚠️ Voting is NOT automatic — you must vote manually.<br><br>
+    Thank you for supporting PRG ❤️
   </div>
 
 </div>
@@ -354,6 +358,18 @@ function handleOpen(links) {
       window.open(url, "_blank", "noopener,noreferrer");
     }, index * 150);
   });
+}
+
+function openVotes(btn, links, originalText) {
+  btn.innerText = "✅ OPENING VOTES...";
+  btn.disabled = true;
+
+  handleOpen(links);
+
+  setTimeout(() => {
+    btn.innerText = originalText;
+    btn.disabled = false;
+  }, 4000);
 }
 </script>
 </body>
